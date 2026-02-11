@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>To-do-calendar</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ===== ЧАСЫ (ВСЕГДА ВИДНЫ) ===== -->
+  <section class="date_time">
+    <h1 class="current_time">
+      <span class="HH">00</span>
+      <span class="Blink">:</span>
+      <span class="MM">00</span>
+    </h1>
+    <span class="date">—</span>
+  </section>
+
+  <!-- ===== РЕГИСТРАЦИЯ ===== -->
+  <section class="register" id="registerSection">
+    <h2 class="register__title">Регистрация</h2>
+    <input
+      id="regEmail"
+      type="email"
+      placeholder="Почта (email)"
+      autocomplete="email"
+    />
+    <button
+      class="register__btn"
+      id="registerBtn"
+      type="button"
+    >
+      Зарегистрироваться
+    </button>
+    <p class="register__status" id="registerStatus"></p>
+  </section>
+
+  <!-- ===== TODO (СКРЫТО ДО РЕГИСТРАЦИИ) ===== -->
+  <section id="appSection" class="app hidden">
+
+    <section class="new_task">
+      <input
+        id="taskName"
+        type="text"
+        placeholder="Название задачи"
+        autocomplete="off"
+      />
+
+      <div class="row">
+        <!-- ДАТА БЕЗ ГОДА -->
+        <input
+          id="taskDate"
+          type="text"
+          placeholder="ДД.ММ"
+          inputmode="numeric"
+        />
+
+        <!-- ВРЕМЯ -->
+        <input
+          id="taskTime"
+          type="time"
+          placeholder="Время"
+          aria-label="Время"
+        />
+      </div>
+    </section>
+
+    <main class="task_list"></main>
+
+    <button
+      class="add_task"
+      type="button"
+      aria-label="Добавить задачу"
+    >
+      +
+    </button>
+  </section>
+
+  <!-- ===== УДАЛИТЬ ВСЕ ЗАДАЧИ ===== -->
+  <button
+    id="clearAllTasks"
+    class="clear-btn"
+    type="button"
+  >
+    🗑 Очистить все задачи
+  </button>
+
+  <!-- ===== ОКНО ДЕТАЛЕЙ ЗАДАЧИ ===== -->
+  <div id="taskModal" class="modal hidden">
+    <div class="modal__overlay" data-close="1"></div>
+
+    <div class="modal__card">
+      <h3 class="modal__title" id="modalTitle">Детали задачи</h3>
+
+      <div class="modal__info">
+        <div><b>Название:</b> <span id="modalName">—</span></div>
+        <div><b>Дата:</b> <span id="modalDate">—</span></div>
+        <div><b>Время:</b> <span id="modalTime">—</span></div>
+      </div>
+
+      <button class="modal__btn" id="modalCloseBtn" type="button">Закрыть</button>
+    </div>
+  </div>
+
+  <script type="module"  src="scrept.js"></script>
+            <script> import { intializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";</script>
+       <script> import { getFilestore } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";</script>
+  
+   
+
+</body>
+</html>
